@@ -1,3 +1,7 @@
+from modules.tasks import *
+from data.inventory import *
+from modules.input import menu_input_globe
+
 def start_game():
     print("Hello Ross, you are in the living room of your gorgeous basement flat when you recieve a text from your beloved Emily, it reads:")
     print("'HI BABES, PLEASE BUY ME THE BEST PRESENT, CU SOON XXX'")
@@ -36,6 +40,7 @@ def bruntsfield_high_street():
     print("2. Sainsbury's")
     print("3. Globetrotter's")
     print("4. Return home")
+    print("5. Display inventory")
 
 def framers(fr_choices):
     print("You enter the framing shop. A plethora of wonderful, exotic frames surround you.")
@@ -59,7 +64,7 @@ def framers_choice_1_cant_afford():
     print("You: 'I can't afford that.. ")
     print("You exit the shop")
 
-def sainsburys(actions, s_choices):
+def sainsburys(actions):
     print("You are in Sainsbury's")
     print("A quick scan of the shelves reveal a few potential choices:")
     for action in actions:
@@ -72,11 +77,28 @@ def sains_choice_1():
     print("The checkout assistant disappears for 10 minutes and reappears with a regular toothbrush")
     print("Checkout assistant: 'This will be £5 please.'")
 
-def sains_choice_2():
-    print("You buy a nice blue bic pen")
-    add_item_to_list(inventory, "a pen")
-    remove_item_from_list(sainsburys_stock, "2. A pen")
-    remove_item_from_list(sainsburys_action_menu, "2. Buy pen")
+def sains_choice_gen(desc, stock_item, action):
+    print(f"You buy {desc}")
+    add_item_to_list(inventory, stock_item)
+    # remove_item_from_list(sainsburys_stock, action)
+    remove_item_from_list(sainsburys_action_menu, action)
+
+
 
 def cant_afford():
     print("You can't afford that")
+
+def globetrotters(choices):
+    print("You are in Globetrotter's chippy")
+    print("Succulent greasy smells fill your flared nostrils and you inhale deeply")
+    print("The woman behind the counter says 'Next please'")
+    print("You look at the menu:")
+    for action in choices:
+        print(action)
+    
+
+def globe_choice_gen(desc, stock_item):
+    print(f"You buy {desc}")
+    add_item_to_list(inventory, stock_item)
+    # remove_item_from_list(sainsburys_stock, action)
+    

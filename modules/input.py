@@ -18,4 +18,8 @@ def menu_input_sains():
     menu_selection = input("What would you like to do?")
     return menu_selection
 
+def menu_input_globe():
+    menu_selection = input("What will you ask for:")
+    return menu_selection
+
 
