@@ -1,5 +1,10 @@
-inventory = ["£50", "notebook of facts about Emily"]
+money_in_wallet = 20 
 
-living_room_items = ["comb", "picture of you and Emily in happier times", "electric toothbrush charger"]
+inventory = [f"£{money_in_wallet}", "notebook of facts about Emily"]
+
+living_room_items = ["comb", "a romantic picture of you and Emily", "electric toothbrush charger"]
 
 living_room_item_menu = ["1. Pick up comb", "2. Pick up picture", "3. Pick up electric toothbrush charger", "S. Stop looking around room"]
+
+framers_menu = ["1. I'd like to get this picture framed in your best frame please.", "2. No, thanks, I'll just be on my way."]
+
