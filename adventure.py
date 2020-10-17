@@ -15,7 +15,6 @@ while True:
         in_living_room = True
         look_living_room(living_room_items)
         while in_living_room:
-            # look_living_room(living_room_items)
             print_menu_look_living_room(living_room_item_menu)
             lr_option = menu_input_living_room_objects()
             if lr_option == "1":
@@ -48,12 +47,15 @@ while True:
                     if "a romantic picture of you and Emily" in inventory:
                         framers(framers_menu)
                         fr_option = menu_input_framers()
-                        if fr_option == "1":
-                            framers_choice_1()
+                        if fr_option == "1" and money_in_wallet >= 6:
+                            framers_choice_1_can_afford()
                             remove_item_from_list(framers_menu, "1. I'd like to get this picture framed in your best frame please.")
                             add_item_to_list(inventory, "a romantic picture of you and Emily, beautifully presented in a clip frame")
                             remove_item_from_list(inventory, "a romantic picture of you and Emily")
                             money_in_wallet -= 6
+                            in_framers = False
+                        elif fr_option == "1" and money_in_wallet < 6:
+                            framers_choice_1_cant_afford()
                             in_framers = False
                         elif fr_option == "2":
                             in_framers = False
@@ -63,8 +65,31 @@ while True:
                         print("Woman: 'May I help you sir?'")
                         print("You: 'No, I have nothing to frame! I'll be on my way.'")
                         in_framers = False 
+            elif option == "2":
+                in_sains = True 
+                while in_sains:
+                    sainsburys(sainsburys_action_menu, sainsburys_stock)
+                    s_option = menu_input_sains()
+                    if s_option == "1":
+                        sains_choice_1()
+                        if money_in_wallet >= 5:
+                            print("You buy the regular toothbrush.")
+                            add_item_to_list(inventory, "a regular toothbrush")
+                            remove_item_from_list(sainsburys_stock, "1. An electric toothbrush (you can't see the price)")
+                            remove_item_from_list(sainsburys_action_menu, "1. Buy toothbrush")
+                        else:
+                            cant_afford()
+                    elif s_option == "2": 
+                        if money_in_wallet >= 2:
+                            sains_choice_2()
+                        else: 
+                            cant_afford()
 
-                        
+                
+
+
+
+
 
 
 

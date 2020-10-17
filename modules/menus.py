@@ -1,5 +1,5 @@
 def start_game():
-    print("Hello Ross, you are in the living room of your flat, 66B, when you recieve a text from your beloved Emily, it reads:")
+    print("Hello Ross, you are in the living room of your gorgeous basement flat when you recieve a text from your beloved Emily, it reads:")
     print("'HI BABES, PLEASE BUY ME THE BEST PRESENT, CU SOON XXX'")
     print("You must buy Emily a present but you only have 4 hours before she returns home from her walk.")
 
@@ -44,10 +44,39 @@ def framers(fr_choices):
     for item in fr_choices:
         print(item)
 
-def framers_choice_1():
+def framers_choice_1_can_afford():
     print("Woman: 'That will be £170 and it will be ready in two weeks.")
     print("You: 'What?? OK what can you do immediately for £20?")
-    print("Woman: 'We have these gorgeous clip frames for £6 a pop.")
-    print("You: 'Okay, I'll take it.")
+    print("Woman: 'We have these gorgeous clip frames for £6 a pop.'")
+    print("You: 'Okay, I'll take one.'")
     print("You now have a beautifully presented romantic picture of you and Emily")
     print("You exit the shop")
+
+def framers_choice_1_cant_afford():
+    print("Woman: 'That will be £170 and it will be ready in two weeks.")
+    print("You: 'What?? OK what can you do immediately for a couple of bucks?")
+    print("Woman: 'We have these gorgeous clip frames for £6 a pop.'")
+    print("You: 'I can't afford that.. ")
+    print("You exit the shop")
+
+def sainsburys(actions, s_choices):
+    print("You are in Sainsbury's")
+    print("A quick scan of the shelves reveal a few potential choices:")
+    for action in actions:
+        print(action)
+
+def sains_choice_1():
+    print("You bring the electric toothbrush to the till.")
+    print("Checkout assistant: 'That will be £60 please.'")
+    print("You: 'How embarassing, I don't have enough money, is there a cheaper option?'")
+    print("The checkout assistant disappears for 10 minutes and reappears with a regular toothbrush")
+    print("Checkout assistant: 'This will be £5 please.'")
+
+def sains_choice_2():
+    print("You buy a nice blue bic pen")
+    add_item_to_list(inventory, "a pen")
+    remove_item_from_list(sainsburys_stock, "2. A pen")
+    remove_item_from_list(sainsburys_action_menu, "2. Buy pen")
+
+def cant_afford():
+    print("You can't afford that")
