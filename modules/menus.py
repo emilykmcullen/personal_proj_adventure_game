@@ -102,3 +102,13 @@ def globe_choice_gen(desc, stock_item):
     add_item_to_list(inventory, stock_item)
     # remove_item_from_list(sainsburys_stock, action)
     
+
+def emily_home(inv, cash):
+    if len(inv)> 8 or cash < 3:
+        print("It's 7pm, Emily is back from her walk!")
+        print("You meet her in the living room at home")
+
+def emily_home_in_lr(inv, cash):
+    if len(inv)> 8 or cash < 3:
+        print("It's 7pm, Emily returns from her walk!")
+        
