@@ -1,6 +1,6 @@
 from modules.tasks import *
 from data.inventory import *
-from modules.input import menu_input_globe
+from modules.input import *
 
 def start_game():
     print("Hello Ross, you are in the living room of your gorgeous basement flat when you recieve a text from your beloved Emily, it reads:")
@@ -40,7 +40,7 @@ def bruntsfield_high_street():
     print("2. Sainsbury's")
     print("3. Globetrotter's")
     print("4. Return home")
-    print("5. Display inventory")
+    print("i. Display inventory")
 
 def framers(fr_choices):
     print("You enter the framing shop. A plethora of wonderful, exotic frames surround you.")
@@ -71,16 +71,11 @@ def sainsburys(actions):
         print(action)
 
 def sains_choice_1():
-    print("You bring the electric toothbrush to the till.")
-    print("Checkout assistant: 'That will be £60 please.'")
-    print("You: 'How embarassing, I don't have enough money, is there a cheaper option?'")
-    print("The checkout assistant disappears for 10 minutes and reappears with a regular toothbrush")
-    print("Checkout assistant: 'This will be £5 please.'")
+    print("You buy a toothbrush")
 
 def sains_choice_gen(desc, stock_item, action):
     print(f"You buy {desc}")
-    add_item_to_list(inventory, stock_item)
-    # remove_item_from_list(sainsburys_stock, action)
+    add_item_to_list(my_inventory, stock_item)
     remove_item_from_list(sainsburys_action_menu, action)
 
 
@@ -99,16 +94,69 @@ def globetrotters(choices):
 
 def globe_choice_gen(desc, stock_item):
     print(f"You buy {desc}")
-    add_item_to_list(inventory, stock_item)
-    # remove_item_from_list(sainsburys_stock, action)
-    
+    add_item_to_list(my_inventory, stock_item)
 
 def emily_home(inv, cash):
     if len(inv)> 8 or cash < 3:
         print("It's 7pm, Emily is back from her walk!")
         print("You meet her in the living room at home")
+        print("Emily: 'Where is my present?'")
+        print("You look at your inventory:")
+        display_inventory(inv)
+        print('Which item should you give Emily?')
+        for i in range(1, len(my_inventory)+1):
+            print(f"{i}. {my_inventory[i-1]['desc']}")
+        choice = my_inventory[int(input("Which num? "))-1]
+        print(f"You give Emily {choice['desc']}")
+        print("You search her face for a response")
+        print("After what seems like hours she looks at you and says:")
+        print(f"'{choice['emily response']}''")
+        if choice["rating"]>= 7: 
+            print("You both hug and have the best relationship for ever and ever")
+            print("GAME OVER")
+        elif 7> choice["rating"]>= 4:
+            print("You get a lukewarm hug, there is a underlying tension in your relationship until the next year when you break up")
+            print(f"Emily cites the time you bought her {choice} as the reason")
+            print("GAME OVER")
+        elif choice["rating"]< 4:
+            print("You immediately break up")
+            print("GAME OVER")
 
 def emily_home_in_lr(inv, cash):
-    if len(inv)> 8 or cash < 3:
+    if len(inv)> 8 or cash <3:
         print("It's 7pm, Emily returns from her walk!")
+        print("Emily: 'Where is my present?'")
+        print("You look at your inventory:")
+        display_inventory(inv)
+        print('Which item should you give Emily?')
+        for i in range(1, len(my_inventory)+1):
+            print(f"{i}. {my_inventory[i-1]['desc']}")
+        choice = my_inventory[int(input("Which num? "))-1]
+        print(f"You give Emily {choice['desc']}")
+        print("You search her face for a response")
+        print("After what seems like hours she looks at you and says:")
+        print(f"'{choice['emily response']}''")
+        if choice["rating"]>= 7: 
+            print("You both hug and have the best relationship for ever and ever")
+            print("GAME OVER")
+        elif 7> choice["rating"]>= 4:
+            print("You get a lukewarm hug, there is a underlying tension in your relationship until the next year when you break up")
+            print(f"Emily cites the time you bought her {choice['desc']} as the reason")
+            print("GAME OVER")
+        elif choice["rating"]< 4:
+            print("You immediately break up")
+            print("GAME OVER")
+        
+
+def game_over(inv, cash):
+    if len(inv)> 8 or cash <3:
+        return False
+    return True
+        
+
+
+
+
+
+
         

@@ -1,0 +1,7 @@
+- emily returns home
+- look at inventory
+- there are two options : give item to Emily, combine two items, use items
+items you can combine:
+pen and post-its 
+
+

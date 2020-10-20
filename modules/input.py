@@ -22,4 +22,6 @@ def menu_input_globe():
     menu_selection = input("What will you ask for:")
     return menu_selection
 
+def menu_input_choose_present():
+    menu_selection = input("What do you want to give Emily? ")
 
