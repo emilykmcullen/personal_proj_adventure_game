@@ -17,19 +17,22 @@ while game_running:
         look_living_room(living_room_items)
         while in_living_room and game_running:
             print_menu_look_living_room(living_room_item_menu)
+            # ADDED ABOVE TOO
             lr_option = menu_input_living_room_objects()
             if lr_option == "1":
                 print("A wooden hair comb, gifted to you by Emily's mum for your birthday. It has brought you many hours of relaxation.")
                 add_item_to_list(my_inventory, possible_inventory_items[0] )
+                rev_item_from_list2(living_room_item_menu, int(lr_option)) 
+                # ABOVE IS WHAT IVE ADDED 
                 remove_item_from_list(living_room_items, "comb")
-                remove_item_from_list(living_room_item_menu, "1. Pick up comb")
+                # remove_item_from_list(living_room_item_menu, "1. Pick up comb")
                 emily_home_in_lr(my_inventory, money_in_wallet)
                 game_running = game_over(my_inventory, money_in_wallet)
             elif lr_option == "2":
                 print("It's a picture of you and Emily eating a picnic, you put it in your pocket")
                 add_item_to_list(my_inventory, possible_inventory_items[1])
                 remove_item_from_list(living_room_items, "a romantic picture of you and Emily")
-                remove_item_from_list(living_room_item_menu, "2. Pick up picture")
+                rev_item_from_list2(living_room_item_menu, int(lr_option))
                 emily_home_in_lr(my_inventory, money_in_wallet)
                 game_running = game_over(my_inventory, money_in_wallet)
             elif lr_option == "3":
@@ -37,6 +40,8 @@ while game_running:
                 print("You: I don't want to pick that up! But perhaps it has given me a good idea for a present....")
             elif lr_option.lower() == "s":
                 in_living_room = False
+            else:
+                print("Invalid input, try again.")
     elif option == "2":
         on_brunts_high_street = True 
         while on_brunts_high_street and game_running:
@@ -79,7 +84,8 @@ while game_running:
                         if money_in_wallet >= 5:
                             print("You buy the regular toothbrush.")
                             add_item_to_list(my_inventory, possible_inventory_items[3])
-                            remove_item_from_list(sainsburys_action_menu, "1. Buy toothbrush £5")
+                            rev_item_from_list2(sainsburys_action_menu, int(s_option))
+                            # remove_item_from_list(sainsburys_action_menu, "1. Buy toothbrush £5")
                             money_in_wallet -= 5
                             update_money_in_inventory(my_inventory, money_in_wallet)
                             emily_home(my_inventory, money_in_wallet)
@@ -88,7 +94,9 @@ while game_running:
                             cant_afford()
                     elif s_option == "2": 
                         if money_in_wallet >= 2:
-                            sains_choice_gen("a nice blue bic pen", possible_inventory_items[4], "2. Buy pen £2")
+                            add_item_to_list(my_inventory, possible_inventory_items[4])
+                            rev_item_from_list2(sainsburys_action_menu, int(s_option))
+                            # sains_choice_gen("a nice blue bic pen", possible_inventory_items[4], "2. Buy pen £2")
                             money_in_wallet -= 2
                             update_money_in_inventory(my_inventory, money_in_wallet)
                             emily_home(my_inventory, money_in_wallet)
@@ -96,16 +104,20 @@ while game_running:
                         else: 
                             cant_afford()
                     elif s_option == "3": 
-                        if money_in_wallet >= 4.95:
-                            money_in_wallet -= 4.95
+                        if money_in_wallet >= 4:
+                            money_in_wallet -= 4
                             update_money_in_inventory(my_inventory, money_in_wallet)
-                            sains_choice_gen("a block of post-it notes in every colour of the rainbow",possible_inventory_items[5], "3. Buy expensive post-it notes £4.95")
+                            add_item_to_list(my_inventory, possible_inventory_items[5])
+                            rev_item_from_list2(sainsburys_action_menu, int(s_option))
+                            # sains_choice_gen("a block of post-it notes in every colour of the rainbow",possible_inventory_items[5], "3. Buy expensive post-it notes £4.95")
                             emily_home(my_inventory, money_in_wallet)
                             game_running = game_over(my_inventory, money_in_wallet)
                         else: 
                             cant_afford()
                     elif s_option == "4":
                         in_sains = False
+                    else:
+                        print("Invalid input, try again.")
             elif br_option == "3":
                 in_globetrotters = True 
                 while in_globetrotters and game_running:
@@ -149,10 +161,14 @@ while game_running:
                             cant_afford()
                     elif g_option == "5":
                         in_globetrotters = False
+                    else:
+                        print("Invalid option, try again")
             elif br_option == "4":
                 on_brunts_high_street = False
             elif br_option == "i":
                 display_inventory(my_inventory)
+            else:
+                print("Invalid input, try again")
 
                 
 

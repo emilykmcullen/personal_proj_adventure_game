@@ -1,6 +1,10 @@
 from modules.tasks import *
 from data.inventory import *
 from modules.input import *
+# for look around living room, sainsburys and globetrotters, edit menu so 
+# if invalid number chosen loop begins again
+# create these menus as dictionaries
+# if number in dictionary its ok
 
 def start_game():
     print("Hello Ross, you are in the living room of your gorgeous basement flat when you recieve a text from your beloved Emily, it reads:")
@@ -24,7 +28,7 @@ def look_living_room(lr_items):
     
 def print_menu_look_living_room(lr_choices):
     for item in lr_choices:
-        print(item)
+        print(item['number'], item['desc'])
     # remove item if chosen
     
 
@@ -68,7 +72,7 @@ def sainsburys(actions):
     print("You are in Sainsbury's")
     print("A quick scan of the shelves reveal a few potential choices:")
     for action in actions:
-        print(action)
+        print(action["number"], action["desc"])
 
 def sains_choice_1():
     print("You buy a toothbrush")
@@ -77,6 +81,7 @@ def sains_choice_gen(desc, stock_item, action):
     print(f"You buy {desc}")
     add_item_to_list(my_inventory, stock_item)
     remove_item_from_list(sainsburys_action_menu, action)
+    # rev_item_from_list2(sainsburys_action_menu, action)
 
 
 
@@ -116,7 +121,7 @@ def emily_home(inv, cash):
             print("GAME OVER")
         elif 7> choice["rating"]>= 4:
             print("You get a lukewarm hug, there is a underlying tension in your relationship until the next year when you break up")
-            print(f"Emily cites the time you bought her {choice} as the reason")
+            print(f"Emily cites the time you bought her {choice['desc']} as the reason")
             print("GAME OVER")
         elif choice["rating"]< 4:
             print("You immediately break up")

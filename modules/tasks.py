@@ -12,3 +12,8 @@ def remove_item_from_list(listt, item):
 
 def update_money_in_inventory(listt, current_amount):
     listt[0]["desc"] = "£" + str(current_amount)
+
+def rev_item_from_list2(lisst, num):
+    for item in lisst:
+        if item["number"] == num:
+            lisst.remove(item)
